@@ -1,0 +1,16 @@
+---
+matrix:
+  include:
+    - IMAGE: 3.8-buster
+      TOXENV: lint
+    - IMAGE: 3.8-buster
+      TOXENV: sort
+    - IMAGE: 3.8-buster
+      TOXENV: format
+
+pipeline:
+  build:
+    image: python:${IMAGE}
+    commands:
+      - pip install tox
+      - tox -e ${TOXENV}

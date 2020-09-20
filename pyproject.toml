@@ -1,0 +1,71 @@
+[build-system]
+requires = ["poetry>=1.0.9,<2.0"]
+build-backend = "poetry.masonry.api"
+
+[tool.poetry]
+name = "trio-gtk"
+version = "0.1.0"
+description = "Trio guest mode wrapper for PyGTK"
+authors = ["decentral1se <lukewm@riseup.net>"]
+maintainers = ["decentral1se <lukewm@riseup.net>"]
+license = "GPLv3"
+readme = "README.md"
+repository = "https://github.com/decentral1se/trio-gtk"
+keywords = ["trio", "async", "asyncio", "curio", "gtk", "pygtk", "gui"]
+
+[tool.poetry.dependencies]
+python = "^3.6"
+trio = "^0.17.0"
+PyGObject = "^3.38.0"
+
+[tool.poetry.dev-dependencies]
+black = "^19.10b0"
+flake8 = "^3.8.3"
+isort = "^5.0.2"
+mypy = "^0.782"
+
+[tool.black]
+line-length = 80
+target-version = ["py38"]
+include = '\.pyi?$'
+
+[tool.isort]
+include_trailing_comma = true
+known_first_party = "trio-gtk"
+known_third_party = "pytest"
+line_length = 80
+multi_line_output = 3
+skip = ".tox"
+
+[tool.tox]
+legacy_tox_ini = """
+[tox]
+envlist =
+  lint
+  sort
+  format
+skip_missing_interpreters = True
+isolated_build = True
+
+[testenv]
+
+[testenv:lint]
+skipdist = True
+deps = flake8
+commands = flake8 {posargs:--max-line-length 80 --ignore E402} trio_gtk.py
+
+[testenv:sort]
+skipdist = True
+deps = isort
+commands = isort {posargs:-c} trio_gtk.py
+
+[testenv:format]
+skipdist = True
+deps = black
+commands = black {posargs:--check} trio_gtk.py
+
+[testenv:type]
+skipdist = True
+deps = mypy
+commands = mypy {posargs:--ignore-missing-imports} trio_gtk.py
+"""
