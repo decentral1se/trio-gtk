@@ -12,5 +12,6 @@ pipeline:
   build:
     image: python:${IMAGE}
     commands:
+      - apt update && apt install -y libgirepository1.0-dev
       - pip install tox
       - tox -e ${TOXENV}
