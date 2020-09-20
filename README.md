@@ -4,9 +4,7 @@
 
 ## Trio guest mode wrapper for PyGTK
 
-Using the [Trio guest mode](https://trio.readthedocs.io/en/latest/reference-lowlevel.html#using-guest-mode-to-run-trio-on-top-of-other-event-loops) feature, we can run both the Trio and PyGTK event loops alongside each other in a single program. This allows us to make use of the Trio library and the usual `async`/`await` syntax and not have to directly manage thread pools.
-
-This library provides a thin wrapper for initialising the guest mode and exposes a single public API function, `trio_gtk.run` into which you can pass your Trio main function. This function must accept a `nursery` argument which can spawn child tasks for the duration of the host loop.
+Using the [Trio guest mode](https://trio.readthedocs.io/en/latest/reference-lowlevel.html#using-guest-mode-to-run-trio-on-top-of-other-event-loops) feature, we can run both the Trio and PyGTK event loops alongside each other in a single program. This allows us to make use of the Trio library and the usual `async`/`await` syntax and not have to directly manage thread pools. This library provides a thin wrapper for initialising the guest mode and exposes a single public API function, `trio_gtk.run` into which you can pass your Trio main function.
 
 ## Install
 
@@ -51,8 +49,10 @@ class Example(gtk.Window):
             print(f"hi from task {count}")
 
 
-async def main(nursery):
-    Example(nursery)
+async def main():
+    async with trio.open_nursery() as nursery:
+        Example(nursery)
+        await trio.sleep_forever()
 
 
 trio_gtk.run(main)

@@ -15,12 +15,6 @@ __all__ = ["run"]
 def run(trio_main):
     """Run Trio and PyGTK together."""
 
-    async def _trio_main():
-        async with trio.open_nursery() as nursery:
-            nursery.start_soon(trio_main, nursery)
-            while gtk.main_level() != 0:
-                await trio.sleep(1)
-
     def done_callback(outcome):
         if isinstance(outcome, Error):
             exc = outcome.error
@@ -31,7 +25,7 @@ def run(trio_main):
         glib.idle_add(function)
 
     trio.lowlevel.start_guest_run(
-        _trio_main,
+        trio_main,
         run_sync_soon_threadsafe=glib_schedule,
         done_callback=done_callback,
         host_uses_signal_set_wakeup_fd=True,

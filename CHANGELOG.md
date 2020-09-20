@@ -1,3 +1,7 @@
+# trio-gtk 1.0.0 (2020-09-21)
+
+- Remove mandatory `nursery` argument for trio main.
+
 # trio-gtk 0.1.1 (2020-09-20)
 
 - Fix traceback handling on `done_callback`.
