@@ -1,6 +1,6 @@
 # trio-gtk
 
-[![Build Status](https://drone.autonomic.zone/api/badges/decentral1se/trio-gtk/status.svg)](https://drone.autonomic.zone/decentral1se/trio-gtk)
+[![Build Status](https://drone.autonomic.zone/api/badges/decentral1se/trio-gtk/status.svg?ref=refs/heads/master)](https://drone.autonomic.zone/decentral1se/trio-gtk)
 
 ## Trio guest mode wrapper for PyGTK
 
