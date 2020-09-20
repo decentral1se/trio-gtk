@@ -1,3 +1,5 @@
+import traceback
+
 import gi
 import trio
 
@@ -5,6 +7,7 @@ gi.require_version("Gtk", "3.0")
 
 from gi.repository import GLib as glib
 from gi.repository import Gtk as gtk
+from outcome import Error
 
 __all__ = ["run"]
 
@@ -19,7 +22,10 @@ def run(trio_main):
                 await trio.sleep(1)
 
     def done_callback(outcome):
-        glib.idle_add(gtk.main_quit)
+        if isinstance(outcome, Error):
+            exc = outcome.error
+            traceback.print_exception(type(exc), exc, exc.__traceback__)
+        gtk.main_quit()
 
     def glib_schedule(function):
         glib.idle_add(function)
