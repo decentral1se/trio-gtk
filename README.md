@@ -1,5 +1,7 @@
 # trio-gtk
 
+[![Build Status](https://drone.autonomic.zone/api/badges/decentral1se/trio-gtk/status.svg)](https://drone.autonomic.zone/decentral1se/trio-gtk)
+
 ## Trio guest mode wrapper for PyGTK
 
 Using the [Trio guest mode](https://trio.readthedocs.io/en/latest/reference-lowlevel.html#using-guest-mode-to-run-trio-on-top-of-other-event-loops) feature, we can run both the Trio and PyGTK event loops alongside each other in a single program. This allows us to make use of the Trio library and the usual `async`/`await` syntax and not have to directly manage thread pools.
