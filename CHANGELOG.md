@@ -1,3 +1,7 @@
+# trio-gtk 1.0.1 (2020-10-08)
+
+- Relax bounds on PyGObject (>= 3.36).
+
 # trio-gtk 1.0.0 (2020-09-21)
 
 - Remove mandatory `nursery` argument for trio main.

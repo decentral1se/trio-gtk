@@ -4,7 +4,7 @@ build-backend = "poetry.masonry.api"
 
 [tool.poetry]
 name = "trio-gtk"
-version = "1.0.0"
+version = "1.0.1"
 description = "Trio guest mode wrapper for PyGTK"
 authors = ["decentral1se <lukewm@riseup.net>"]
 maintainers = ["decentral1se <lukewm@riseup.net>"]
@@ -16,7 +16,7 @@ keywords = ["trio", "async", "asyncio", "curio", "gtk", "pygtk", "gui"]
 [tool.poetry.dependencies]
 python = "^3.6"
 trio = "^0.17.0"
-PyGObject = "^3.38.0"
+PyGObject = "^3.36.0"
 
 [tool.poetry.dev-dependencies]
 black = "^19.10b0"
