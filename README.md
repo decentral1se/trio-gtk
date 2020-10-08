@@ -12,6 +12,12 @@ Using the [Trio guest mode](https://trio.readthedocs.io/en/latest/reference-lowl
 $ pip install trio-gtk
 ```
 
+Please note, `trio-gtk` does not install [pygobject](https://gitlab.gnome.org/GNOME/pygobject) directly as a Python package because the handling of that package has hard dependencies system level packges such as [Cairo](https://pygobject.readthedocs.io/en/latest/guide/cairo_integration.html). To avoid `pip` build failures due to inconsistencies with different distributions we leave the installation of `pygobject` to the system level package manager. For Debian, this means you woulc run the following:
+
+```bash
+$ sudo apt install python3-gi python3-gi-cairo gir1.2-gtk-3.0
+```
+
 ## Example
 
 ```python
