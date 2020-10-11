@@ -12,7 +12,7 @@ Using the [Trio guest mode](https://trio.readthedocs.io/en/latest/reference-lowl
 $ pip install trio-gtk
 ```
 
-Please note, `trio-gtk` does install [pygobject](https://gitlab.gnome.org/GNOME/pygobject) directly as a Python package. We use relaxed bounds to ensure that the hard dependency on system packages (see [cairo integration documentation](https://pygobject.readthedocs.io/en/latest/guide/cairo_integration.html) will not stop you having a successful installation. This may not always work out. If you see a build error during your Pip installation, please raise a ticket and we will see what we can do.
+Please note, `trio-gtk` does install [pygobject](https://gitlab.gnome.org/GNOME/pygobject) directly as a Python package. We use relaxed bounds to ensure that the hard dependency on system packages (see [cairo integration documentation](https://pygobject.readthedocs.io/en/latest/guide/cairo_integration.html)) will not stop you having a successful installation. This may not always work out. If you see a build error during your Pip installation, please raise a ticket and we will see what we can do.
 
 ## Example
 
