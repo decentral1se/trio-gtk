@@ -4,7 +4,7 @@ build-backend = "poetry.masonry.api"
 
 [tool.poetry]
 name = "trio-gtk"
-version = "2.0.0"
+version = "3.0.0"
 description = "Trio guest mode wrapper for PyGTK"
 authors = ["decentral1se <lukewm@riseup.net>"]
 maintainers = ["decentral1se <lukewm@riseup.net>"]
@@ -15,6 +15,8 @@ keywords = ["trio", "async", "asyncio", "curio", "gtk", "pygtk", "gui"]
 
 [tool.poetry.dependencies]
 python = "^3.6"
+pycairo = "< 1.20"  # Note(decentral1se): https://gitlab.gnome.org/GNOME/pygobject/-/issues/395#note_929699
+pygobject = "< 3.32"  # Note(decentral1se): related to ^^^, we need an old pygobject that accepts an old pycairo
 trio = "^0.17.0"
 
 [tool.poetry.dev-dependencies]
